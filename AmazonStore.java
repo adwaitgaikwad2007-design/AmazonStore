@@ -344,7 +344,7 @@ public class AmazonStore {
     // -----------------------------
     public static void main(String[] args) throws Exception {
         if (PRODUCTS.isEmpty()) seedProducts();
-        HttpServer server = HttpServer.create(new InetSocketAddress(8080), 0);
+     HttpServer server = HttpServer.create(new InetSocketAddress(Integer.parseInt(System.getenv().getOrDefault("PORT", "8080"))), 0);
         server.createContext("/", AmazonStore::handle);
         server.setExecutor(Executors.newCachedThreadPool());
         server.start();
